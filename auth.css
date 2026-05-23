@@ -1,0 +1,110 @@
+.login-page, .signup-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 40px 20px;
+    background-color: var(--background-color);
+}
+
+.login-container, .signup-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.login-container h2, .signup-container h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0 0 24px 0;
+    letter-spacing: -0.02em;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: var(--text-color);
+    outline: none;
+}
+
+.password-group {
+    position: relative;
+    width: 100%;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: color 0.3s;
+}
+
+.toggle-password:hover {
+    color: var(--text-color);
+}
+
+.error-message {
+    color: #ef4444;
+    font-size: 0.85rem;
+    margin-top: 4px;
+}
+
+.form-group.success input {
+    border-color: #10b981;
+}
+
+.form-group.error input {
+    border-color: #ef4444;
+}
+
+.login-container p, .signup-container p {
+    margin-top: 24px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.login-container a, .signup-container a {
+    color: var(--text-color);
+    font-weight: 600;
+    text-decoration: none;
+    transition: text-decoration 0.3s;
+}
+
+.login-container a:hover, .signup-container a:hover {
+    text-decoration: underline;
+}
+
