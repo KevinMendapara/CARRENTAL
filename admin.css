@@ -174,3 +174,19 @@
         box-sizing: border-box;
     }
 }
+
+/* Admin Access Authentication Mode */
+.admin-page.admin-auth-mode {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 85vh;
+    background: radial-gradient(circle at 50% 50%, var(--secondary-color) 0%, var(--background-color) 100%);
+    padding: 60px 20px;
+}
+.admin-page.admin-auth-mode .admin-login-card {
+    display: block;
+}
+.admin-page:not(.admin-auth-mode) .admin-login-card {
+    display: none;
+}
