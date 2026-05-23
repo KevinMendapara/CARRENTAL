@@ -1,4 +1,4 @@
-// ===== UTILITY FUNCTIONS FOR DRIVELUX CAR RENTAL =====
+// ===== UTILITY FUNCTIONS FOR LUXEGO CAR RENTAL =====
 
 // Storage Helpers
 const Storage = {

@@ -248,12 +248,12 @@ const generateReceiptHTML = (booking) => {
           <li>Arrive 15 minutes before pickup time</li>
           <li>Check vehicle condition before and after use</li>
           <li>Fuel policy: Return with same fuel level</li>
-          <li>In case of emergency, contact: +1-800-DRIVELUX</li>
+          <li>In case of emergency, contact: +1-800-LUXEGO</li>
         </ul>
       </div>
 
       <div class="receipt-footer">
-        <p>Thank you for choosing DriveLux!</p>
+        <p>Thank you for choosing LuxeGo!</p>
         <p>Your booking reference: <strong>${booking.id}</strong></p>
       </div>
     </div>

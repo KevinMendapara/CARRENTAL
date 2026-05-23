@@ -3,6 +3,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuBtn = document.querySelector('.menu-btn');
     const navLinks = document.querySelector('.nav-links');
     const loader = document.getElementById('loader');
+
+    // --- Dynamic Navigation Guard for Admin Portal link ---
+    const checkNavbarAdminLink = () => {
+        const adminLinks = document.querySelectorAll('nav a[href="admin.html"], ul.nav-links a[href="admin.html"], footer a[href="admin.html"]');
+        adminLinks.forEach(link => {
+            const li = link.closest('li');
+            if (li) {
+                if (localStorage.getItem('isAdminLoggedIn') === 'true') {
+                    li.style.display = '';
+                } else {
+                    li.style.display = 'none';
+                }
+            }
+        });
+    };
+    checkNavbarAdminLink();
+
     const formatPrice = (amount) => {
         if (typeof formatCurrency === 'function') return formatCurrency(amount);
         return new Intl.NumberFormat('en-IN', {

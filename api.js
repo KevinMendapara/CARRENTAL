@@ -1,5 +1,5 @@
 // ==========================================
-// DRIVELUX - CARAPI CORE API SERVICE LAYER
+// LUXEGO - CARAPI CORE API SERVICE LAYER
 // ==========================================
 //
 // ENVIRONMENT CONFIGURATION:
@@ -14,11 +14,11 @@ const CARAPI_SECRET = '3H4ZCi9mhZsFpowmmVhUh1NF1C5NoSPPvH';
 const CarAPI = {
   // Local storage keys
   KEYS: {
-    CARS: 'drivelux_cars',
+    CARS: 'luxego_cars',
     BOOKINGS: 'bookings',
-    JWT: 'drivelux_jwt',
-    JWT_EXP: 'drivelux_jwt_exp',
-    CATALOG_VERSION: 'drivelux_catalog_version'
+    JWT: 'luxego_jwt',
+    JWT_EXP: 'luxego_jwt_exp',
+    CATALOG_VERSION: 'luxego_catalog_version'
   },
 
   CATALOG_VERSION: 'local-colorful-real-car-images-inr-v9',
@@ -112,7 +112,7 @@ const CarAPI = {
       id: 1,
       name: "Maruti Suzuki Swift",
       brand: "Maruti Suzuki",
-      price: 35,
+      price: 35000,
       fuel: "Petrol",
       seats: 5,
       transmission: "Manual",
@@ -127,7 +127,7 @@ const CarAPI = {
       id: 2,
       name: "Hyundai i20",
       brand: "Hyundai",
-      price: 42,
+      price: 42000,
       fuel: "Petrol",
       seats: 5,
       transmission: "Manual",
@@ -142,7 +142,7 @@ const CarAPI = {
       id: 3,
       name: "Tata Nexon",
       brand: "Tata",
-      price: 55,
+      price: 55000,
       fuel: "Diesel",
       seats: 5,
       transmission: "Automatic",
@@ -157,7 +157,7 @@ const CarAPI = {
       id: 4,
       name: "Mahindra XUV500",
       brand: "Mahindra",
-      price: 95,
+      price: 95000,
       fuel: "Diesel",
       seats: 7,
       transmission: "Automatic",
@@ -172,7 +172,7 @@ const CarAPI = {
       id: 5,
       name: "Honda City",
       brand: "Honda",
-      price: 65,
+      price: 65000,
       fuel: "Petrol",
       seats: 5,
       transmission: "Automatic",
@@ -187,7 +187,7 @@ const CarAPI = {
       id: 6,
       name: "BMW 3 Series",
       brand: "BMW",
-      price: 250,
+      price: 25000,
       fuel: "Petrol",
       seats: 5,
       transmission: "Automatic",
@@ -202,7 +202,7 @@ const CarAPI = {
       id: 7,
       name: "Audi A4",
       brand: "Audi",
-      price: 280,
+      price: 28000,
       fuel: "Diesel",
       seats: 5,
       transmission: "Automatic",
@@ -217,7 +217,7 @@ const CarAPI = {
       id: 8,
       name: "Mercedes-Benz C-Class",
       brand: "Mercedes-Benz",
-      price: 320,
+      price: 32000,
       fuel: "Petrol",
       seats: 5,
       transmission: "Automatic",
@@ -232,7 +232,7 @@ const CarAPI = {
       id: 9,
       name: "Porsche 911",
       brand: "Porsche",
-      price: 850,
+      price: 85000,
       fuel: "Petrol",
       seats: 4,
       transmission: "Automatic",
@@ -247,7 +247,7 @@ const CarAPI = {
       id: 10,
       name: "Ford Mustang",
       brand: "Ford",
-      price: 450,
+      price: 45000,
       fuel: "Petrol",
       seats: 4,
       transmission: "Manual",
@@ -262,7 +262,7 @@ const CarAPI = {
       id: 11,
       name: "Chevrolet Camaro",
       brand: "Chevrolet",
-      price: 420,
+      price: 42000,
       fuel: "Petrol",
       seats: 4,
       transmission: "Manual",
@@ -277,7 +277,7 @@ const CarAPI = {
       id: 12,
       name: "Land Rover Range Rover",
       brand: "Land Rover",
-      price: 550,
+      price: 55000,
       fuel: "Diesel",
       seats: 5,
       transmission: "Automatic",
@@ -292,7 +292,7 @@ const CarAPI = {
       id: 13,
       name: "Lexus LC 500",
       brand: "Lexus",
-      price: 650,
+      price: 65000,
       fuel: "Petrol",
       seats: 4,
       transmission: "Automatic",
@@ -307,7 +307,7 @@ const CarAPI = {
       id: 14,
       name: "Jaguar F-Type",
       brand: "Jaguar",
-      price: 520,
+      price: 52000,
       fuel: "Petrol",
       seats: 2,
       transmission: "Automatic",
@@ -322,7 +322,7 @@ const CarAPI = {
       id: 15,
       name: "Maserati Ghibli",
       brand: "Maserati",
-      price: 720,
+      price: 72000,
       fuel: "Petrol",
       seats: 5,
       transmission: "Automatic",
@@ -337,7 +337,7 @@ const CarAPI = {
       id: 16,
       name: "Ferrari 488",
       brand: "Ferrari",
-      price: 1500,
+      price: 150000,
       fuel: "Petrol",
       seats: 2,
       transmission: "Automatic",
@@ -352,7 +352,7 @@ const CarAPI = {
       id: 17,
       name: "Rolls Royce Phantom",
       brand: "Rolls Royce",
-      price: 1200,
+      price: 120000,
       fuel: "Petrol",
       seats: 5,
       transmission: "Automatic",
@@ -367,7 +367,7 @@ const CarAPI = {
       id: 18,
       name: "Lamborghini Aventador",
       brand: "Lamborghini",
-      price: 1400,
+      price: 140000,
       fuel: "Petrol",
       seats: 2,
       transmission: "Automatic",
@@ -382,7 +382,7 @@ const CarAPI = {
       id: 19,
       name: "Bentley Continental GT",
       brand: "Bentley",
-      price: 980,
+      price: 98000,
       fuel: "Petrol",
       seats: 4,
       transmission: "Automatic",
@@ -397,7 +397,7 @@ const CarAPI = {
       id: 20,
       name: "Bugatti Chiron",
       brand: "Bugatti",
-      price: 1800,
+      price: 180000,
       fuel: "Petrol",
       seats: 2,
       transmission: "Automatic",
@@ -553,7 +553,7 @@ const CarAPI = {
         throw new Error('No trims found in CARAPI response.');
       }
 
-      // Map trims to DriveLux model schema
+      // Map trims to LuxeGo model schema
       const syncedCars = trims.map((trim, index) => {
         const id = index + 1;
         const brand = trim.make?.name || 'Unknown Make';

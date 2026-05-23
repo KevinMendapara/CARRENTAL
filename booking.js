@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Coupon discount
     let discount = 0;
     const couponCode = document.getElementById('coupon-code').value.toUpperCase();
-    if (couponCode === 'DRIVELUX10') {
+    if (couponCode === 'LUXEGO10') {
       discount = (basePrice + insurancePrice + addOnsPrice) * 0.1;
       bookingData.couponCode = couponCode;
     }

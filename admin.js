@@ -244,9 +244,171 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Initialize displays
-    loadAnalytics();
-    loadCars();
-    loadBookings();
-    loadUsers();
+    // --- Admin Access Control and Validation ---
+    function showAdminError(input, message) {
+        if (!input) return;
+        const formGroup = input.closest('.form-group');
+        if (!formGroup) return;
+        formGroup.classList.remove('success');
+        formGroup.classList.add('error');
+        const errorContainer = formGroup.querySelector('.error-message');
+        if (errorContainer) {
+            errorContainer.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+        }
+    }
+
+    function showAdminSuccess(input) {
+        if (!input) return;
+        const formGroup = input.closest('.form-group');
+        if (!formGroup) return;
+        formGroup.classList.remove('error');
+        formGroup.classList.add('success');
+        const errorContainer = formGroup.querySelector('.error-message');
+        if (errorContainer) {
+            errorContainer.innerHTML = '';
+        }
+    }
+
+    function clearAdminErrors(form) {
+        if (!form) return;
+        form.querySelectorAll('.form-group').forEach(group => {
+            group.classList.remove('error');
+            group.classList.remove('success');
+            const err = group.querySelector('.error-message');
+            if (err) err.innerHTML = '';
+        });
+    }
+
+    // Password visibility toggle
+    document.querySelectorAll('.toggle-password').forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const passwordInput =
+                (toggle.dataset && toggle.dataset.targetId ? document.getElementById(toggle.dataset.targetId) : null) ||
+                toggle.previousElementSibling ||
+                toggle.parentElement && toggle.parentElement.querySelector('input[type="password"], input[type="text"]');
+
+            if (!passwordInput || !passwordInput.type) return;
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggle.classList.remove('fa-eye-slash');
+                toggle.classList.add('fa-eye');
+            } else {
+                passwordInput.type = 'password';
+                toggle.classList.remove('fa-eye');
+                toggle.classList.add('fa-eye-slash');
+            }
+        });
+    });
+
+    const adminEmailInput = document.getElementById('admin-email');
+    const adminPasswordInput = document.getElementById('admin-password');
+
+    if (adminEmailInput) {
+        ['input', 'blur'].forEach(evt => {
+            adminEmailInput.addEventListener(evt, () => {
+                const val = adminEmailInput.value.trim();
+                if (!val) {
+                    showAdminError(adminEmailInput, 'Email or username is required');
+                } else {
+                    showAdminSuccess(adminEmailInput);
+                }
+            });
+        });
+    }
+
+    if (adminPasswordInput) {
+        ['input', 'blur'].forEach(evt => {
+            adminPasswordInput.addEventListener(evt, () => {
+                const val = adminPasswordInput.value.trim();
+                if (!val) {
+                    showAdminError(adminPasswordInput, 'Password is required');
+                } else {
+                    showAdminSuccess(adminPasswordInput);
+                }
+            });
+        });
+    }
+
+    function showDashboard() {
+        const loginCard = document.getElementById('admin-login-card');
+        const dashboardContainer = document.getElementById('admin-dashboard-container');
+        const pageMain = document.querySelector('.admin-page');
+
+        if (loginCard) loginCard.style.display = 'none';
+        if (dashboardContainer) dashboardContainer.style.display = 'flex';
+        if (pageMain) pageMain.classList.remove('admin-auth-mode');
+
+        // Load all data
+        loadAnalytics();
+        loadCars();
+        loadBookings();
+        loadUsers();
+    }
+
+    const adminLoginForm = document.getElementById('admin-login-form');
+    if (adminLoginForm) {
+        adminLoginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            clearAdminErrors(adminLoginForm);
+
+            const email = (adminEmailInput.value || '').trim();
+            const password = (adminPasswordInput.value || '').trim();
+
+            let isValid = true;
+            if (!email) {
+                showAdminError(adminEmailInput, 'Email or username is required');
+                isValid = false;
+            }
+            if (!password) {
+                showAdminError(adminPasswordInput, 'Password is required');
+                isValid = false;
+            }
+
+            if (!isValid) return;
+
+            // Check admin credentials
+            const isEmailCorrect = email.toLowerCase() === 'admin@luxego.com' || email.toLowerCase() === 'admin';
+            const isPasswordCorrect = password === 'admin123' || password === 'admin';
+
+            if (isEmailCorrect && isPasswordCorrect) {
+                localStorage.setItem('isAdminLoggedIn', 'true');
+                localStorage.setItem('loggedInUser', JSON.stringify({ email: 'admin@luxego.com', name: 'Administrator', role: 'admin' }));
+                localStorage.setItem('currentUser', JSON.stringify({ email: 'admin@luxego.com', name: 'Administrator', role: 'admin' }));
+                showDashboard();
+            } else {
+                if (!isEmailCorrect) {
+                    showAdminError(adminEmailInput, 'Invalid admin username or email');
+                } else {
+                    showAdminError(adminPasswordInput, 'Incorrect password');
+                }
+            }
+        });
+    }
+
+    const adminLogoutBtn = document.getElementById('admin-logout-btn');
+    if (adminLogoutBtn) {
+        adminLogoutBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (confirm('Are you sure you want to sign out from the Admin Portal?')) {
+                localStorage.removeItem('isAdminLoggedIn');
+                localStorage.removeItem('loggedInUser');
+                localStorage.removeItem('currentUser');
+                window.location.reload();
+            }
+        });
+    }
+
+    // Initialize displays based on auth state
+    const loginCard = document.getElementById('admin-login-card');
+    const dashboardContainer = document.getElementById('admin-dashboard-container');
+    const pageMain = document.querySelector('.admin-page');
+
+    if (localStorage.getItem('isAdminLoggedIn') === 'true') {
+        showDashboard();
+    } else {
+        if (loginCard) loginCard.style.display = 'block';
+        if (dashboardContainer) dashboardContainer.style.display = 'none';
+        if (pageMain) pageMain.classList.add('admin-auth-mode');
+    }
 });
