@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DriveLux - Admin Dashboard</title>
+    <title>LuxeGo - Admin Dashboard</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/auth.css">
     <link rel="stylesheet" href="assets/css/admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -15,7 +16,7 @@
     </div>
     <header>
         <nav class="navbar">
-          <a href="index.html" class="logo">DriveLux</a>
+          <a href="index.html" class="logo">LuxeGo</a>
           <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="cars.html">Cars</a></li>
@@ -39,8 +40,30 @@
         </nav>
       </header>
 
-    <main class="admin-page">
-        <div class="admin-container">
+    <main class="admin-page admin-auth-mode">
+        <!-- Admin Authentication Portal -->
+        <div class="login-container admin-login-card" id="admin-login-card">
+            <h2>Admin Portal</h2>
+            <p class="subtitle">Authenticate to access administration dashboard</p>
+            <form id="admin-login-form">
+                <div class="form-group">
+                    <label for="admin-email">Email or Username</label>
+                    <input type="text" id="admin-email" placeholder="admin@luxego.com" required>
+                    <div class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <label for="admin-password">Password</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="admin-password" placeholder="••••••••" required>
+                        <i class="fas fa-eye-slash toggle-password" data-target-id="admin-password"></i>
+                    </div>
+                    <div class="error-message"></div>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 15px;">Access Panel</button>
+            </form>
+        </div>
+
+        <div class="admin-container" id="admin-dashboard-container" style="display: none;">
             <aside class="admin-sidebar">
                 <div class="admin-profile">
                     <img src="assets/images/user-placeholder.jpg" alt="Admin Avatar" class="avatar">
@@ -51,6 +74,7 @@
                     <li><a href="#manage-cars" class="sidebar-link" data-target="manage-cars"><i class="fas fa-car"></i><span>Manage Cars</span></a></li>
                     <li><a href="#manage-bookings" class="sidebar-link" data-target="manage-bookings"><i class="fas fa-tasks"></i><span>Manage Bookings</span></a></li>
                     <li><a href="#manage-users" class="sidebar-link" data-target="manage-users"><i class="fas fa-users"></i><span>Manage Users</span></a></li>
+                    <li><a href="#" id="admin-logout-btn" class="sidebar-link"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
                 </ul>
             </aside>
             <section class="admin-main">
@@ -106,7 +130,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 DriveLux. All rights reserved.</p>
+            <p>&copy; 2024 LuxeGo. All rights reserved.</p>
             <ul>
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="reviews.html">Reviews</a></li>

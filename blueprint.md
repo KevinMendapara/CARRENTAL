@@ -1,8 +1,8 @@
-# DriveLux Car Rental
+# LuxeGo Car Rental
 
 ## Overview
 
-DriveLux is a modern and stylish car rental website. It provides a seamless user experience for finding, booking, and managing car rentals. The design is clean, with a focus on high-quality imagery and intuitive navigation.
+LuxeGo is a modern and stylish car rental website. It provides a seamless user experience for finding, booking, and managing car rentals. The design is clean, with a focus on high-quality imagery and intuitive navigation.
 
 ## Implemented Features
 
@@ -55,7 +55,7 @@ DriveLux is a modern and stylish car rental website. It provides a seamless user
     *   The selected car's details are displayed for confirmation.
 *   **Price Calculation:**
     *   The total price is dynamically calculated based on the rental duration.
-    *   Support for coupon codes (e.g., `DRIVELUX10` for a 10% discount).
+    *   Support for coupon codes (e.g., `LUXEGO10` for a 10% discount).
 *   **Fake Payment System:**
     *   Multiple simulated payment options are provided: Demo UPI, Demo Card, Demo Wallet, and Cash on Pickup.
     *   The system simulates payment success or failure.
